@@ -113,11 +113,76 @@ _start:
 	int	80h
 ```
 
+**Registers:**
+
+Registers are basically places where the processor can stock informations, we can think of them as tiny variables.
+Here is a list of *x64* registers:
+```
+rbp: Base Pointer, points to the bottom of the current stack frame
+rsp: Stack Pointer, points to the top of the current stack frame
+rip: Instruction Pointer, points to the instruction to be executed
+
+General Purpose Registers
+These can be used for a variety of different things.
+rax:
+rbx:
+rcx:
+rdx:
+rsi:
+rdi:
+r8:
+r9:
+r10:
+r11:
+r12:
+r13:
+r14:
+r15:
+```
+
+In x64 arguments are passed to function via registers.
+```
+rdi:    First Argument
+rsi:    Second Argument
+rdx:    Third Argument
+rcx:    Fourth Argument
+r8:     Fifth Argument
+r9:     Sixth Argument
+```
+
+Also, like how a C function return a value, the return value in x64 is stored in the `rax` register.
+
+There are different sizes of registers.
+```
++-----------------+---------------+---------------+------------+
+| 8 Byte Register | Lower 4 Bytes | Lower 2 Bytes | Lower Byte |
++-----------------+---------------+---------------+------------+
+|   rbp           |     ebp       |     bp        |     bpl    |
+|   rsp           |     esp       |     sp        |     spl    |
+|   rip           |     eip       |               |            |
+|   rax           |     eax       |     ax        |     al     |
+|   rbx           |     ebx       |     bx        |     bl     |
+|   rcx           |     ecx       |     cx        |     cl     |
+|   rdx           |     edx       |     dx        |     dl     |
+|   rsi           |     esi       |     si        |     sil    |
+|   rdi           |     edi       |     di        |     dil    |
+|   r8            |     r8d       |     r8w       |     r8b    |
+|   r9            |     r9d       |     r9w       |     r9b    |
+|   r10           |     r10d      |     r10w      |     r10b   |
+|   r11           |     r11d      |     r11w      |     r11b   |
+|   r12           |     r12d      |     r12w      |     r12b   |
+|   r13           |     r13d      |     r13w      |     r13b   |
+|   r14           |     r14d      |     r14w      |     r14b   |
+|   r15           |     r15d      |     r15w      |     r15b   |
++-----------------+---------------+---------------+------------+
+```
+
+
 **ft_strlen**
 
 To output `Hello World!`, we had to hardcode the length of the string, and that's not ideal, we programmers don't like hardcode, we like to code to realtime.
 To calculate the length of the string we will use a technique called *pointer arithmetic*. Two registers are initialised pointing to the same address in memory.
-One register (in this case EAX) will be incremented forward one byte for each character in the output string until we reach the end of the string. The original pointer will then be subtracted from EAX.
+One register (in this case RAX) will be incremented forward one byte for each character in the output string until we reach the end of the string. The original pointer will then be subtracted from RAX.
 This is effectevely like subtraction between two arrays and the result yields the number of elements between the two addresses.
 
 We use `CMP` instruction to compare the left hand side against the right hand side and sets a number of flags that are used for program flow.
