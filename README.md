@@ -35,11 +35,11 @@ mov ebx, 1					; Set the fd to 1
 mov eax, 4					; Call the sys_write systemcall, its corresponding number [_NR] is 4 in the sys call table
 ```
 
-*Compilation:*
+**Compilation:**
 
 To compile our program we would use `nasm`
 
-*Install nasm:*
+**Install nasm:**
 ArchLinux:
 ```sh
 pacman -Sy nasm
@@ -70,7 +70,7 @@ Run:
 ./progname
 ```
 
-*Entry lable:*
+**Entry lable:**
 Computer programs can be thought as a long strip of instructions that are loaded into memory and divided un into sections (or segments).
 This general pool of memory is then shared between all programs and can be used to store variables, instructions, etc.
 Each segment is given an address so that information stored in that section can be found later.
@@ -78,7 +78,7 @@ Each segment is given an address so that information stored in that section can 
 To execute a program that is loaded in memory, we use the global label `_start` to tell the operating system where in memory our program can be found and executed.
 memory is then accessed sequentially following the program logic which determines the next address to be accessed. The kernel would jump into that address and executes it.
 
-*Exit SysCall:*
+**Exit SysCall:**
 One of the most important syscall is exit, if we don't exit our program properly it would cause a `segmentation fault`, and that's not what we want.
 Just like how we tell the operating system where the program start in memory, we should also tell where it ends.
 
@@ -88,3 +88,36 @@ mov ebx, 0	; Return 0 status on exit - 'No Errors'
 mov eax, 1	; Invoke SYS_EXIT
 int	80h
 ```
+
+Here is final example of *Hello world program*
+
+```asm
+SECTION .data
+message	db	'Hello world!', 0Ah		; Assign hello world to message
+
+SECTION .text
+global	_start
+
+_start:
+	mov	edx, 13
+	mov	ecx, message
+	mov	ebx, 1
+	mov	eax, 4
+	int	80h
+
+	mov	ebx, 0
+	mov	eax, 1
+	int	80h
+```
+
+**ft_strlen**
+
+To output `Hello World!`, we had to hardcode the length of the string, and that's not ideal, we programmers don't like hardcode, we like to code to realtime.
+To calculate the length of the string we will use a technique called *pointer arithmetic*. Two registers are initialised pointing to the same address in memory.
+One register (in this case EAX) will be incremented forward one byte for each character in the output string until we reach the end of the string. The original pointer will then be subtracted from EAX.
+This is effectevely like subtraction between two arrays and the result yields the number of elements between the two addresses.
+
+We use `CMP` instruction to compare the left hand side against the right hand side and sets a number of flags that are used for program flow.
+The flag we are interested in here is `ZF` or `Zero Flag`, if the values that have been compared are equal the `ZF` then would be set.
+
+We can use another instruction `JZ` which means *jump to some specific addresses if the zero flag is set*.
