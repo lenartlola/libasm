@@ -22,7 +22,7 @@ Assembly yourself
 In order to build programs we need to use the linux system calls provided by the kernel. 
 *System Calls* often called *SysCalls* are libraries built into the operating system to provide functions such as reading input from keyboard and writing output to the screen.
 
-In order to make a system call we should load the corresponding number in the (SysCall table)[https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md#x86-32_bit] to the `eax` register,
+In order to make a system call we should load the corresponding number in the [SysCall table](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md#x86-32_bit) to the `eax` register,
 if the function requires arguments we can load them to the remaining `edx`, `ecx`, `ebx`
 
 For example if we want to call the `sys_write` we would load `4` to the `eax`, then we load the corresponding fd to `arg0(%ebx)`, the `arg1(%ecx)` would be the line to write and the `arg2(%edx)` would be the line length.
@@ -40,6 +40,7 @@ mov eax, 4					; Call the sys_write systemcall, its corresponding number [_NR] i
 To compile our program we would use `nasm`
 
 *Install nasm:*
+
 ArchLinux:
 ```sh
 pacman -Sy nasm
@@ -71,6 +72,7 @@ Run:
 ```
 
 *Entry lable:*
+
 Computer programs can be thought as a long strip of instructions that are loaded into memory and divided un into sections (or segments).
 This general pool of memory is then shared between all programs and can be used to store variables, instructions, etc.
 Each segment is given an address so that information stored in that section can be found later.
@@ -79,6 +81,7 @@ To execute a program that is loaded in memory, we use the global label `_start` 
 memory is then accessed sequentially following the program logic which determines the next address to be accessed. The kernel would jump into that address and executes it.
 
 *Exit SysCall:*
+
 One of the most important syscall is exit, if we don't exit our program properly it would cause a `segmentation fault`, and that's not what we want.
 Just like how we tell the operating system where the program start in memory, we should also tell where it ends.
 
