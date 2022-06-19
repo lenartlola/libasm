@@ -8,8 +8,8 @@ Assembly yourself
 - The library must be called libasm.a.
 - Create a main that will test the functions.
 - Create the following functions:
-	- ft_strlen 
-	- ft_strcpy
+	- ~~ft_strlen~~
+	- ~~ft_strcpy~~
 	- ft_strcmp
 	- ft_write
 	- ft_read

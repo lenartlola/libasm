@@ -12,7 +12,7 @@ int	main(int argc, char **argv) {
 	//printf("ft_strlen = %d\n", ft_strlen(argv[1]));
 	//printf("   strlen = %lu\n", strlen(argv[1]));
 
-	char	*strcpydst = malloc(sizeof(argv[1]));
+	char	*strcpydst = malloc(ft_strlen(argv[1]));
 	ft_strcpy(strcpydst, argv[1]);
 	printf("strcpydst -> %s\n", strcpydst);
 
