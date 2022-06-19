@@ -5,17 +5,17 @@ Assembly yourself
 > Summary: The aim of this project is to get familiar with assembly language.
 
 ## TODOS:
-	- The library must be called libasm.a.
-	- Create a main that will test the functions.
-	- Create the following functions:
-		- ft_strlen 
-		- ft_strcpy
-		- ft_strcmp
-		- ft_write
-		- ft_read
-		- ft_strdup
-	- Errors during syscalls must be set properly.
-	- The variable errno must be set properly `extern ___error` or `errno_location` are allowed for that.
+- The library must be called libasm.a.
+- Create a main that will test the functions.
+- Create the following functions:
+	- ft_strlen 
+	- ft_strcpy
+	- ft_strcmp
+	- ft_write
+	- ft_read
+	- ft_strdup
+- Errors during syscalls must be set properly.
+- The variable errno must be set properly `extern ___error` or `errno_location` are allowed for that.
 
 ## Documentation
 
@@ -124,7 +124,7 @@ rip: Instruction Pointer, points to the instruction to be executed
 
 General Purpose Registers
 These can be used for a variety of different things.
-rax:
+rax: ; Mostly return value
 rbx:
 rcx:
 rdx:
