@@ -12,7 +12,7 @@ Assembly yourself
 	- ~~ft_strcpy~~
 	- ~~ft_strcmp~~
 	- ~~ft_write~~
-	- ft_read
+	- ~~ft_read~~
 	- ft_strdup
 - Errors during syscalls must be set properly.
 - The variable errno must be set properly `extern ___error` or `errno_location` are allowed for that.

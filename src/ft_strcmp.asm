@@ -9,9 +9,9 @@
 
 segment .text						; the text segment or section is dedicated to the actual code - aka code segment.
 
-global	ft_strcmp					; global tells the kernel where the program starts
+global	_ft_strcmp					; global tells the kernel where the program starts
 
-ft_strcmp:
+_ft_strcmp:
 	push	rcx
 	xor		rcx, rcx
 	jmp		_loop_cmp

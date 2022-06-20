@@ -7,10 +7,10 @@
 
 segment	.text
 
-global	ft_write
+global	_ft_write
 
-ft_write:
-	mov		rax, 0x01		; Call the write system-call
+_ft_write:
+	mov		rax, 0x01		; Call the write system-call, its number in the systemcall table structure is 0x01 for x64 arch
 	syscall
 	ret
 	

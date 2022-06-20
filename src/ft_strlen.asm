@@ -4,9 +4,9 @@
 
 segment .text
 
-global ft_strlen
+global _ft_strlen
 
-ft_strlen:
+_ft_strlen:
 	push	rcx					; Create a counter
 	xor		rcx, rcx			; Use the XOR to set the counter to zero
 
