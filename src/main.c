@@ -4,6 +4,7 @@
 
 extern int	ft_strlen(char *);
 extern int	ft_strcmp(char *, char *);
+extern int	ft_write(int, char *, size_t);
 extern char	*ft_strcpy(char *, char *);
 
 int	main(int argc, char **argv) {
@@ -15,8 +16,9 @@ int	main(int argc, char **argv) {
 
 	char	*strcpydst = malloc(ft_strlen(argv[1]));
 	ft_strcpy(strcpydst, argv[1]);
-	printf("strcpydst -> %s\n", strcpydst);
-
+	ft_write(1, "ft_strcpy -> ", ft_strlen("ft_strcpy -> "));
+	ft_write(1, strcpydst, ft_strlen(strcpydst));
+	ft_write(1, "\n", 1);
 	free(strcpydst);
 	
 	if (argc == 3)

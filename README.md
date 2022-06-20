@@ -11,7 +11,7 @@ Assembly yourself
 	- ~~ft_strlen~~
 	- ~~ft_strcpy~~
 	- ~~ft_strcmp~~
-	- ft_write
+	- ~~ft_write~~
 	- ft_read
 	- ft_strdup
 - Errors during syscalls must be set properly.

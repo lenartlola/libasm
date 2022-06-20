@@ -1,6 +1,6 @@
 ; ft_strlen by 0xdeadabed
-; 18.06.2022 07:52
-; nasm -f elf ft_strlen.asm
+; 18.06.2022 07:52 PM
+; nasm -f elf64 ft_strlen.asm
 
 segment .text
 

@@ -1,5 +1,5 @@
 ; ft_strcpy by 0xdeadabed
-; 19.06.2022 05:03
+; 19.06.2022 05:03 PM
 ; nasm -f elf64 ft_strcpy.asm
 
 segment .text
